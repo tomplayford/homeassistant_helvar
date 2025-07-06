@@ -31,7 +31,7 @@ class HelvarRouter:
         return self.config_entry.data[CONF_PORT]
 
     async def async_setup(self, tries=0):
-        """Set up a helval router based on host paramete50000r."""
+        """Set up a helvar router based on host parameter."""
         host = self.host
         port = self.port
         hass = self.hass
@@ -54,10 +54,10 @@ class HelvarRouter:
         # self.sensor_manager = SensorManager(self)
 
         hass.async_create_task(
-            hass.config_entries.async_forward_entry_setup(self.config_entry, "light"),
+            hass.config_entries.async_forward_entry_setups(self.config_entry, ["light"]),
         )
         hass.async_create_task(
-            hass.config_entries.async_forward_entry_setup(self.config_entry, "select"),
+            hass.config_entries.async_forward_entry_setups(self.config_entry, ["select"]),
         )
 
         return True

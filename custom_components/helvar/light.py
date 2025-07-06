@@ -18,7 +18,7 @@ from .const import (  # DEFAULT_OFF_GROUP_BLOCK,; DEFAULT_OFF_GROUP_SCENE,; DEFA
 _LOGGER = logging.getLogger(__name__)
 
 
-async def asynnc_setup_platform(hass, config, add_entities, discovery_info=None):
+async def async_setup_platform(hass, config, add_entities, discovery_info=None):
     """Not currently used."""
 
 
