@@ -4,7 +4,8 @@
   "codeowners": ["@tomplayford"],
   "config_flow": true,
   "dependencies": [],
-  "documentation": "https://www.home-assistant.io/integrations/helvar",
+  "documentation": "https://github.com/tomplayford/homeassistant_helvar",
+  "issue_tracker": "https://github.com/tomplayford/homeassistant_helvar/issues"
   "homekit": {},
   "iot_class": "local_push",
   "loggers": ["aiohelvar"],
