@@ -9,8 +9,8 @@
   "homekit": {},
   "iot_class": "local_push",
   "loggers": ["aiohelvar"],
-  "requirements": ["aiohelvar==0.9.3"],
+  "requirements": ["aiohelvar==0.9.4"],
   "ssdp": [],
-  "version": "0.2.0", 
+  "version": "0.2.1", 
   "zeroconf": []
 }
