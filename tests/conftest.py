@@ -31,6 +31,14 @@ def mock_hass():
     """Create a mock Home Assistant instance."""
     hass = Mock()
     hass.data = {}
+    hass.config_entries = Mock()
+    # Mock async_create_task to prevent coroutines from being scheduled
+    hass.async_create_task = Mock(return_value=None)
+    hass.config_entries.async_forward_entry_setups = Mock(return_value=None)
+    # async_forward_entry_unload needs to be async for asyncio.gather in unload
+    async def mock_unload(*args, **kwargs):
+        return True
+    hass.config_entries.async_forward_entry_unload = mock_unload
     return hass
 
 
@@ -45,4 +53,4 @@ def mock_config_entry():
 @pytest.fixture
 def mock_add_entities():
     """Create a mock add_entities function."""
-    return AsyncMock()
+    return Mock()
