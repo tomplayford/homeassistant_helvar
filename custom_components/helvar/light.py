@@ -4,11 +4,10 @@ import logging
 import aiohelvar
 
 # Import the device class from the component that you want to support
-from homeassistant.components.light import (  # COLOR_MODE_ONOFF,
+from homeassistant.components.light import (
     ATTR_BRIGHTNESS,
-    COLOR_MODE_BRIGHTNESS,
-    SUPPORT_BRIGHTNESS,
     LightEntity,
+    ColorMode,
 )
 
 from .const import (  # DEFAULT_OFF_GROUP_BLOCK,; DEFAULT_OFF_GROUP_SCENE,; DEFAULT_ON_GROUP_BLOCK,; DEFAULT_ON_GROUP_SCENE,; VALID_OFF_GROUP_SCENES,
@@ -105,12 +104,14 @@ class HelvarLight(LightEntity):
     def supported_color_modes(self):
         """Colour modes."""
 
-        return [COLOR_MODE_BRIGHTNESS]
+        return [ColorMode.BRIGHTNESS]
 
     @property
-    def supported_features(self) -> int:
-        """Supported Features."""
-        return SUPPORT_BRIGHTNESS
+    def color_mode(self):
+        """Return the color mode of the light."""
+
+        # We only support brightness for now.
+        return ColorMode.BRIGHTNESS
 
     async def async_turn_on(self, **kwargs):
         """We'll just select scene 1 for a group, for now."""
